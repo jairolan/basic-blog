@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
-  before_action :find_params, except: [:new, :create]
+  before_action :find_params, except: [:new, :create, :index]
+
+  def index
+    @articles = Article.all
+  end
   def show
     # @article = Article.find(params[:id])
   end
