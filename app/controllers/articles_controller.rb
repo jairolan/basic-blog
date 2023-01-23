@@ -17,18 +17,19 @@ class ArticlesController < ApplicationController
 
   def update
     # @article = Article.find(params[:id])
-    @article.update(title: params[:article][:title], content: params[:article][:content])
+    @article.update(article_params)
     redirect_to @article
   end
 
   def create
-    @article = current_user.articles.create(title: params[:article][:title], content: params[:article][:content])
+    @article = current_user.articles.create(article_params)
 =begin
     @article = Article.create(title: params[:article][:title],
                               content: params[:article][:content],
                               user: current_user)
 =end
-    render json: @article
+    # redirect json: @article
+    redirect_to json: @article
   end
 
   def destroy
@@ -43,5 +44,9 @@ class ArticlesController < ApplicationController
 
   def find_params
     @article = Article.find(params[:id])
+  end
+
+  def article_params
+    params.require(:article).permit(:title, :content)
   end
 end
