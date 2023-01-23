@@ -5,8 +5,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   get "/bienvenida", to: "home#index"
+
   root to: "home#index"
-  get "articles/user/:user_id", to: "articles#from_author"
+
+  resources :articles do
+    get "user/:user_id", to: "articles#from_author", on: :collection
+  end
+=begin
   get "articles", to: "articles#index"
   get "articles/:id/edit", to: "articles#edit"
   get "articles/new", to: "articles#new", as: :new_articles
@@ -14,5 +19,6 @@ Rails.application.routes.draw do
   post "articles", to: "articles#create"
   patch "/articles/:id", to: "articles#update", as: :article
   delete "articles/:id", to: "articles#destroy"
+=end
 
 end
