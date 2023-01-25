@@ -1,10 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<!--<p style="color: green"><%#= notice %></p>
 
-<%= render @category %>
+<%#= render @category %>
 
 <div>
-  <%= link_to "Edit this category", edit_category_path(@category) %> |
-  <%= link_to "Back to categories", categories_path %>
+  <%#= link_to "Edit this category", edit_category_path(@category) %> |
+  <%#= link_to "Back to categories", categories_path %>
 
-  <%= button_to "Destroy this category", @category, method: :delete %>
+  <%#= button_to "Destroy this category", @category, method: :delete %>
+</div>-->
+
+<div class="large-container center-block">
+  <h1>Articulos publicados en: <%= @category.title %></h1>
+  <%= render @category.articles %>
 </div>

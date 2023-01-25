@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   get "/bienvenida", to: "home#index"
+  get "perfil", to: "users#edit"
+  resources :users, only: [:update]
 
   root to: "home#index"
 
