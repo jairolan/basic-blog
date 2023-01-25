@@ -12,9 +12,8 @@
 
   <body>
     <% if notice %>
-      <p class="notice alert-primary"><%= notice %></p>
-    <% end %>
-    <% if notice %>
+      <p class="alert alert-primary"><%= notice %></p>
+    <% elsif alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
     <%= render "partials/nav" %>

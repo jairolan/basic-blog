@@ -1,10 +1,25 @@
-<h1><%= @article.title %></h1>
+<div class="large-container center-block">
+  <h1><%= @article.title %></h1>
+  <div>
+    <p>Escrito por: <strong><%= @article.user.email %></strong> </p>
+    <% if current_user.avatar.attached? %>
+      <%= image_tag url_for(current_user.avatar), height: 30 %>
+    <% end %>
+  </div>
+  <div>
+    <%= @article.content %>
+  </div>
 
-<div>
-  <%= @article.content %>
-</div>
+  <div class="margin-top">
+    <p class="label">Tags</p>
+    <% @article.categories.each do |category| %>
+      <span class="badge badge-pill padding" style="background-color: <%= category.color %>">
+        <%= link_to category.title, category, class:"text-white" %>
+      </span>
+    <% end %>
+  </div>
 
-<div>
-  <%= link_to "Eliminar el articulo", @article %>
-
+  <div>
+    <%= link_to "Eliminar el articulo", @article, data: { turbo_method: :delete }%>
+  </div>
 </div>
